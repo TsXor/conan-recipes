@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 new file mode 100644
-index 0000000..0c9777d
+index 0000000..4c11b54
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,706 @@
+@@ -0,0 +1,708 @@
 +cmake_minimum_required(VERSION 3.12)
 +
 +project(libbacktrace LANGUAGES C VERSION 1.0.0)
@@ -446,8 +446,10 @@ index 0000000..0c9777d
 +)
 +install(
 +    TARGETS backtrace
-+    DESTINATION lib
 +    EXPORT libbacktrace-targets
++    ARCHIVE DESTINATION lib
++    LIBRARY DESTINATION lib
++    RUNTIME DESTINATION bin
 +)
 +install(
 +    EXPORT libbacktrace-targets
