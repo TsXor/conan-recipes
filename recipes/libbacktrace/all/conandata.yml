@@ -1,0 +1,9 @@
+sources:
+  "cci.20240806":
+    url: "https://github.com/ianlancetaylor/libbacktrace/archive/86885d14049fab06ef8a33aac51664230ca09200.tar.gz"
+    sha256: "baf8aebd22002b762d803ba0e1e389b6b4415159334e9d34bba1a938f6de8ce6"
+patches:
+  "cci.20240806":
+    - patch_file: "patches/0001-cmake-support.patch"
+      patch_description: "add cmake support"
+      patch_type: "portability"
