@@ -64,9 +64,14 @@ class LibbacktraceConan(ConanFile):
         fix_apple_shared_install_name(self)
 
     def package_info(self):
+        is_win = self.settings.get_safe("os") == "Windows"
+
         self.cpp_info.libs = ["backtrace"]
-        self.cpp_info.set_property("cmake_file_name", "libbacktrace")
-        self.cpp_info.set_property("cmake_target_name", "libbacktrace::backtrace")
+        self.cpp_info.set_property("cmake_find_mode", "none")
+        self.cpp_info.builddirs.append(os.path.join("CMake"))
+        if is_win:
+            for bindir in self.cpp_info.bindirs:
+                self.runenv_info.append_path("PATH", os.path.join(self.package_folder, bindir))
 
         # TODO: to remove in conan v2 once cmake_find_package_* generators removed
         self.cpp_info.filenames["cmake_find_package"] = "PACKAGE"
